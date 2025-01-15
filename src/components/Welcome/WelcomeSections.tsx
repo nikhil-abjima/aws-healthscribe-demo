@@ -29,15 +29,17 @@ export function Overview() {
 export function Highlights() {
     return (
         <SpaceBetween size={'s'}>
-            // <Header variant="h2">Highlights</Header>
-            // <Container>
-                // <ul>
-                    // <li>Submit an audio file for AWS HealthScribe.</li>
-                    // <li>View AWS HealthScribe results.</li>
-                    // <li>Record or generate audio.</li>
-                    // <li>Integration with Amazon Comprehend Medical.</li>
-                // </ul>
-            // </Container>
+            { /* <Header variant="h2">Highlights</Header>
+             <Container>
+                 <ul>
+                     <li>Submit an audio file for AWS HealthScribe.</li>
+                     <li>View AWS HealthScribe results.</li>
+                     <li>Record or generate audio.</li>
+                     <li>Integration with Amazon Comprehend Medical.</li>
+                 </ul>
+
+             </Container>
+          */}
         </SpaceBetween>
     );
 }
