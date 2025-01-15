@@ -8,7 +8,7 @@ export function verifyJobParams(jobParams: StartMedicalScribeJobRequest) {
         return {
             verified: false,
             message:
-                'Job name must be between 1-200 characters. Valid characters are a-z, A-Z, 0-9, . (period), _ (underscore), and – (hyphen).',
+                'Conversation name must be between 1-200 characters. Valid characters are a-z, A-Z, 0-9, . (period), _ (underscore), and – (hyphen).',
         };
     }
 

@@ -47,7 +47,7 @@ export default function WelcomeHeader() {
             >
                 <SpaceBetween size="xl">
                     <Box fontSize="display-l" fontWeight="bold">
-                        Demo Application Experience
+                        CVR HealthScribe App
                     </Box>
                 </SpaceBetween>
             </Grid>
