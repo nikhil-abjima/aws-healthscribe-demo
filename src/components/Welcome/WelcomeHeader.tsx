@@ -49,44 +49,7 @@ export default function WelcomeHeader() {
                     <Box fontSize="display-l" fontWeight="bold">
                         Demo Application Experience
                     </Box>
-                    <Box fontSize="display-l">Powered by AWS HealthScribe</Box>
                 </SpaceBetween>
-
-                <div>
-                    {isUserAuthenticated && (
-                        <Container>
-                            <SpaceBetween size="l">
-                                <Box variant="h1" fontWeight="heavy" padding="n" fontSize="heading-m">
-                                    Get started
-                                </Box>
-                                <RadioGroup
-                                    onChange={({ detail }) => setGetStartedSelection(detail.value)}
-                                    value={getStartedSelection}
-                                    items={[
-                                        {
-                                            value: 'conversations',
-                                            label: 'Conversations',
-                                            description: 'View available conversations',
-                                        },
-                                        {
-                                            value: 'newConversation',
-                                            label: 'New Conversation',
-                                            description: 'Record or submit new audio',
-                                        },
-                                        {
-                                            value: 'generateAudio',
-                                            label: 'Generate Audio',
-                                            description: 'Generate multi-speaker synthetic audio',
-                                        },
-                                    ]}
-                                />
-                                <Button variant="primary" onClick={() => handleGetStartedClick()}>
-                                    {getStartedSelectionText}
-                                </Button>
-                            </SpaceBetween>
-                        </Container>
-                    )}
-                </div>
             </Grid>
         </Box>
     );
