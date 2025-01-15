@@ -22,8 +22,8 @@ export default function SideNav() {
             text: 'New Conversation',
             href: '/new',
         },
-        { type: 'divider' },
-        {
+        { /* { type: 'divider' },
+         {
             type: 'link',
             text: 'Generate Audio',
             href: '/generate',
@@ -52,13 +52,14 @@ export default function SideNav() {
             text: 'Amazon Web Services',
             href: 'https://aws.amazon.com',
             external: true,
-        },
+        }, */}
+
     ];
 
     return (
         <SideNavigation
             activeHref={`/${location.pathname.split('/')[1]}`}
-            header={{ text: 'AWS HealthScribe', href: '/' }}
+            header={{ text: 'CVR HealthScribe', href: '/' }}
             items={sideNavItems}
             onFollow={(e) => {
                 e.preventDefault();
