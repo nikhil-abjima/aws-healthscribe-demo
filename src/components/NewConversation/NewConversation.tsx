@@ -43,7 +43,7 @@ export default function NewConversation() {
     const [searchParams] = useSearchParams();  
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | React.ReactElement[]>('');
-    const [jobName, setJobName] = useState<string>(''); // form - job name
+    const [jobName, setJobName] = useState<any>(''); // form - job name
     const [audioSelection, setAudioSelection] = useState<AudioSelection>('speakerPartitioning'); // form - audio selection
     // form - audio details
     const [audioDetails, setAudioDetails] = useState<AudioDetails>({
