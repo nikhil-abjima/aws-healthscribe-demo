@@ -3,6 +3,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from "react-router-dom";
 
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
@@ -39,7 +40,7 @@ import { AudioDetails, AudioSelection } from './types';
 export default function NewConversation() {
     const { updateProgressBar } = useNotificationsContext();
     const navigate = useNavigate();
-
+    const [searchParams] = useSearchParams();  
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | React.ReactElement[]>('');
     const [jobName, setJobName] = useState<string>(''); // form - job name
@@ -56,7 +57,7 @@ export default function NewConversation() {
     const [filePath, setFilePath] = useState<File>(); // only one file is allowd from react-dropzone. NOT an array
     const [outputBucket, getUploadMetadata] = useS3(); // outputBucket is the Amplify bucket, and uploadMetadata contains uuid4
 
-    const [submissionMode, setSubmissionMode] = useState<string>('uploadRecording'); // to hide or show the live recorder
+    const [submissionMode, setSubmissionMode] = useState<string>('liveRecording'); // to hide or show the live recorder
     const [recordedAudio, setRecordedAudio] = useState<File | undefined>(); // audio file recorded via live recorder
 
     // Set array for TokenGroup items
@@ -221,12 +222,17 @@ export default function NewConversation() {
         setFilePath(recordedAudio);
     }, [recordedAudio]);
 
+    
+    useEffect(() => {
+        setJobName(searchParams.get("key"));
+    }, []);
+
     return (
         <ContentLayout
             headerVariant={'high-contrast'}
             header={
                 <Header
-                    description="Upload your audio file to be processed"
+                    description="Record your audio file to be processed"
                     variant="awsui-h1-sticky"
                 >
                     New Conversation
@@ -259,8 +265,8 @@ export default function NewConversation() {
                         }
                     >
                         <SpaceBetween direction="vertical" size="xl">
-                            <InputName jobName={jobName} setJobName={setJobName} />
-                            <AudioIdentificationType
+                           (!jobName) ?  <InputName jobName={jobName} setJobName={setJobName} /> : <></>
+                            {/* <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}
                             />
@@ -268,7 +274,7 @@ export default function NewConversation() {
                                 audioSelection={audioSelection}
                                 audioDetails={audioDetails}
                                 setAudioDetails={setAudioDetails}
-                            />
+                            /> */}
                             <FormField
                                 label={
                                     <SpaceBetween direction="horizontal" size="xs">
@@ -296,7 +302,6 @@ export default function NewConversation() {
                                             onChange={({ detail }) => setSubmissionMode(detail.value)}
                                             value={submissionMode}
                                             items={[
-                                                { value: 'uploadRecording', label: 'Upload Recording' },
                                                 { value: 'liveRecording', label: 'Live Recording' },
                                             ]}
                                         />
