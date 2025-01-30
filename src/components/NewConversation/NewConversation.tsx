@@ -265,7 +265,7 @@ export default function NewConversation() {
                         }
                     >
                         <SpaceBetween direction="vertical" size="xl">
-                           (!jobName) ?  <InputName jobName={jobName} setJobName={setJobName} /> : <></>
+                           {(!jobName) ?  (<InputName jobName={jobName} setJobName={setJobName} />) : (<></>)}
                             {/* <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}
